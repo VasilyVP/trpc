@@ -11,7 +11,7 @@ export const routes = {
         }),
     userById: publicProcedure
         .input(z.string())
-        .query(async (opts: { input: string }) => {
+        .query(async (opts) => {
             const { input } = opts;
 
             const user = Users.find(user => user.id === input);
@@ -20,7 +20,7 @@ export const routes = {
         }),
     userCreate: publicProcedure
         .input(z.object({ email: z.coerce.string().email() }))
-        .mutation(async (opts: { input: { email: string } }) => {
+        .mutation(async (opts) => {
             const { email } = opts.input;
 
             const user = {
